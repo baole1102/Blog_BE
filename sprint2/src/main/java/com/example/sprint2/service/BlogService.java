@@ -22,10 +22,6 @@ public class BlogService implements IBlogService{
         return blogRepository.listBlog();
     }
 
-    @Override
-    public Optional<IBlogDto> maxViewBlog() {
-        return blogRepository.maxViewBlog();
-    }
 
     @Override
     public Optional<IBlogDto> findByBlogId(Long id) {
@@ -55,6 +51,16 @@ public class BlogService implements IBlogService{
     @Override
     public List<IBlogDto> listBlogCurrent() {
         return blogRepository.listBlogCurrent();
+    }
+
+    @Override
+    public Page<IBlogDto> findBlogByTopic(Pageable pageable, Long id) {
+        return blogRepository.findBlogByTopic(pageable,id);
+    }
+
+    @Override
+    public void editBlog(BlogDTO blog) {
+        blogRepository.editBlog(blog);
     }
 
 

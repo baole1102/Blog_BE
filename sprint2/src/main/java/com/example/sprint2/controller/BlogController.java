@@ -2,12 +2,8 @@ package com.example.sprint2.controller;
 
 import com.example.sprint2.dto.BlogDTO;
 import com.example.sprint2.dto.IBlogDto;
-import com.example.sprint2.model.Blog;
-import com.example.sprint2.model.Category;
-import com.example.sprint2.model.Topic;
 import com.example.sprint2.service.IBlogService;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,15 +32,6 @@ public class BlogController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/maxBlog")
-    public ResponseEntity<?> getMaxViewBlog() {
-        Optional<IBlogDto> blogs = blogService.maxViewBlog();
-        if (blogs.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(blogs, HttpStatus.OK);
-    }
-
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> getBlogById(@PathVariable Long id) {
         Optional<IBlogDto> blog = blogService.findByBlogId(id);
@@ -59,8 +46,8 @@ public class BlogController {
                                                 @RequestParam(name = "page", defaultValue = "0") int page) {
         Pageable pageable = PageRequest.of(page, 5);
         if (id == 0) {
-        Page<IBlogDto> list = blogService.pageListBlog(pageable);
-        return new ResponseEntity<>(list,HttpStatus.OK);
+            Page<IBlogDto> list = blogService.pageListBlog(pageable);
+            return new ResponseEntity<>(list, HttpStatus.OK);
         }
         Page<IBlogDto> list = blogService.getAllBlogSearch(pageable, id);
         if (list == null) {
@@ -71,7 +58,7 @@ public class BlogController {
 
     @PostMapping("/admin/addBlog")
     public ResponseEntity<?> save(@RequestBody @Valid BlogDTO blogDTO, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         blogService.create(blogDTO);
@@ -79,20 +66,43 @@ public class BlogController {
     }
 
     @GetMapping("/highView")
-    public ResponseEntity<?> getBlogHighView(){
+    public ResponseEntity<?> getBlogHighView() {
         List<IBlogDto> list = blogService.getBlogHighView();
-        if (list == null){
+        if (list == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @GetMapping("/current")
-    public ResponseEntity<?> getListBlogCurrent(){
+    public ResponseEntity<?> getListBlogCurrent() {
         List<IBlogDto> list = blogService.listBlogCurrent();
-        if (list == null){
+        if (list == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+    @GetMapping("/findBlog")
+    public ResponseEntity<?> findBlogByTopic(@RequestParam(name = "id") Long id,
+                                             @RequestParam(name = "page", defaultValue = "0") int page) {
+        Pageable pageable = PageRequest.of(page, 5);
+        Page<IBlogDto> list = blogService.findBlogByTopic(pageable, id);
+        if (list == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+
+    @PostMapping("/admin/editBlog")
+    public ResponseEntity<?> editBlogByAdmin(@RequestBody @Valid BlogDTO blogDTO,BindingResult bindingResult){
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        blogService.editBlog(blogDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

@@ -31,4 +31,5 @@ public class BlogDTO {
     private Boolean status = false;
     private Long topicId;
     private Long categoryId;
+    private Long userId;
 }

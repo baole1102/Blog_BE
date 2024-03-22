@@ -13,5 +13,7 @@ public interface IBlogDto {
     String getImageUser();
     String getDescription();
     Long getIdCategory();
+    Long getIdTopic();
+    Long getIdUser();
 
 }

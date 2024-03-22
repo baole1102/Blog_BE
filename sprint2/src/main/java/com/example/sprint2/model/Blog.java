@@ -42,4 +42,7 @@ public class Blog {
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "topic_id",referencedColumnName = "id")
+    private Topic topic;
 }

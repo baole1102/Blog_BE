@@ -12,11 +12,13 @@ import java.util.Optional;
 
 public interface IBlogService {
     List<IBlogDto> listBlog();
-    Optional<IBlogDto> maxViewBlog();
     Optional<IBlogDto> findByBlogId (@Param("id") Long id);
     Page<IBlogDto> getAllBlogSearch(Pageable pageable, Long id);
     Page<IBlogDto> pageListBlog(Pageable pageable);
     void create(BlogDTO blog);
     List<IBlogDto> getBlogHighView();
     List<IBlogDto> listBlogCurrent();
+    Page<IBlogDto> findBlogByTopic(Pageable pageable, @Param("id") Long id);
+
+    void editBlog(BlogDTO blog);
 }

@@ -1,0 +1,54 @@
+package com.example.sprint2.repository;
+
+import com.example.sprint2.dto.ICartDto;
+import com.example.sprint2.model.Cart;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ICartRepository extends JpaRepository<Cart,Long> {
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO `blogs`.`cart` (`product_id`, `user_id`,`quantity`) VALUES (:idProduct, :idUser,1)",nativeQuery = true)
+    void addToCart(Long idProduct,Long idUser);
+
+    @Query(value = "select * from cart c where c.product_id =:idProduct and c.user_id =:idUser and c.status = false",nativeQuery = true)
+    List<Cart> findByProduct(@Param("idProduct") Long idProduct, @Param("idUser") Long idUser);
+    @Query(value = "select * from cart c where c.product_id =:idProduct and c.user_id =:idUser and c.status = false",nativeQuery = true)
+    Cart getCartByIdProductAndIdUser(@Param("idProduct") Long idProduct, @Param("idUser") Long idUser);
+
+    @Query(value = "select  p.id as id,p.name_product as nameProduct,\n" +
+            "p.price as price, p.image_product as imageProduct,\n" +
+            "c.quantity\n" +
+            "from product p\n" +
+            "join cart c on p.id = c.product_id\n" +
+            "where c.user_id = :idUser and p.is_deleted = 0 and c.status = false",nativeQuery = true)
+    List<ICartDto> listCart(@Param("idUser") Long idUser);
+
+    @Query(value = "select sum(c.quantity*p.price)\n" +
+            "from product p\n" +
+            "join cart c on p.id = c.product_id\n" +
+            "where c.user_id = :idUser and p.is_deleted = 0 and c.status=false",nativeQuery = true)
+    Long totalPrice(@Param("idUser") Long idUser);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE `blogs`.`cart` SET `status` = true WHERE cart.user_id =:idUser",nativeQuery = true)
+    void paymentCart(@Param("idUser") Long idUser);
+
+
+    @Query(value = "select count(*) \n" +
+            "from cart c \n" +
+            "where c.user_id = :idUser and c.status = false",nativeQuery = true)
+    Long countCart(@Param("idUser") Long idUser);
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM cart c WHERE c.product_id =:idProduct and c.user_id = :idUser and c.status = false",nativeQuery = true)
+    void deleteCart(Long idProduct,Long idUser);
+}

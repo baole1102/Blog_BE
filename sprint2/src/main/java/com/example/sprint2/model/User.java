@@ -1,11 +1,20 @@
 package com.example.sprint2.model;
 
+import com.example.sprint2.dto.IUserDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -30,12 +39,8 @@ public class User {
     private String image;
     @Column(columnDefinition = "boolean default false")
     private Boolean isDeleted = false;
-
-
-    @ManyToOne
-    @JoinColumn(name = "role_id",referencedColumnName = "id")
-    private Role role;
-
-
+    @Column(columnDefinition = "boolean default false")
+    private Boolean status = false;
+    private String address;
 
 }

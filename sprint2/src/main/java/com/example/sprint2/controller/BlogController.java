@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +25,9 @@ public class BlogController {
     private IBlogService blogService;
 
     @GetMapping
-    public ResponseEntity<?> getAllBlogs() {
-        List<IBlogDto> list = blogService.listBlog();
+    public ResponseEntity<?> getAllBlogs(@RequestParam(name = "page") int page) {
+        Pageable pageable = PageRequest.of(page,3);
+        Page<IBlogDto> list = blogService.pageListBlog(pageable);
         if (list == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -38,31 +40,8 @@ public class BlogController {
         if (blog.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        blogService.updateViewer(blog.get().getId(), blog.get().getViewer()+1);
         return new ResponseEntity<>(blog, HttpStatus.OK);
-    }
-
-    @GetMapping("/admin/search")
-    public ResponseEntity<?> getAllBlogBySearch(@RequestParam(name = "id", defaultValue = "0") Long id,
-                                                @RequestParam(name = "page", defaultValue = "0") int page) {
-        Pageable pageable = PageRequest.of(page, 5);
-        if (id == 0) {
-            Page<IBlogDto> list = blogService.pageListBlog(pageable);
-            return new ResponseEntity<>(list, HttpStatus.OK);
-        }
-        Page<IBlogDto> list = blogService.getAllBlogSearch(pageable, id);
-        if (list == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(list, HttpStatus.OK);
-    }
-
-    @PostMapping("/admin/addBlog")
-    public ResponseEntity<?> save(@RequestBody @Valid BlogDTO blogDTO, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        blogService.create(blogDTO);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/highView")
@@ -94,15 +73,6 @@ public class BlogController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-
-    @PostMapping("/admin/editBlog")
-    public ResponseEntity<?> editBlogByAdmin(@RequestBody @Valid BlogDTO blogDTO,BindingResult bindingResult){
-        if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        blogService.editBlog(blogDTO);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
 
 }

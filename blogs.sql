@@ -190,4 +190,40 @@ join user_has_role uhr on u.id = uhr.user_id
 join role r on r.id = uhr.role_id
 where u.is_deleted = 0 and u.account = "bao" limit 1;
 
-select * from product p where p.is_deleted = false and p.content like "%a%"
+select * from product p where p.is_deleted = false and p.content like "%a%";
+
+select p.content as content, 
+p.description as description,
+p.image_product as imageProduct,
+p.name_product as nameProduct,
+p.price as price,
+p.quantity as quantity,
+p.id as id,
+p.type_product_id as typeProductId
+from product p
+join type_product tp on p.type_product_id = tp.id
+where p.id = 1 and p.is_deleted = false;
+
+select u.image as image, u.name as name, u.number as number, r.name as role, u.email as email
+from user u
+join user_has_role uhr on uhr.user_id = u.id
+join role r on uhr.role_id = r.id 
+where u.is_deleted = false and u.name like "%d%";
+
+select max(c.create_order) as createOrder, max(c.confirm) as confirm,max(c.status) as status
+from cart c 
+where c.user_id = 2
+group by c.create_order;
+
+select p.id as id, p.content as content, 
+p.description as description,
+p.image_product as imageProduct,
+p.name_product as nameProduct,
+p.price as price,
+p.quantity as quantity,
+p.type_product_id as typeProductId,
+c.confirm as confirm
+from product p
+join type_product tp on p.type_product_id = tp.id
+join cart c on c.product_id = p.id
+where p.id = 2 and c.create_order = "2024-04-02 15:25:04.460000" ;

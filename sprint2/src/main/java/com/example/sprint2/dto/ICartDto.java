@@ -1,9 +1,14 @@
 package com.example.sprint2.dto;
 
+import java.util.Date;
+
 public interface ICartDto {
     Long getId();
     String getNameProduct();
     Long getPrice();
     String getImageProduct();
-    int getQuantity();
+    Integer getQuantity();
+    Date getCreateOrder();
+    Boolean getStatus();
+    Boolean getConfirm();
 }

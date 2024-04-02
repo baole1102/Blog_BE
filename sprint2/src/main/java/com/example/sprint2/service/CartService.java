@@ -1,11 +1,15 @@
 package com.example.sprint2.service;
 
 import com.example.sprint2.dto.ICartDto;
+import com.example.sprint2.dto.IProductDto;
 import com.example.sprint2.model.Cart;
 import com.example.sprint2.repository.ICartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,8 +47,8 @@ public class CartService implements ICartService{
     }
 
     @Override
-    public void paymentCart(Long idUser) {
-        cartRepository.paymentCart(idUser);
+    public void paymentCart(Long idUser , Date date) {
+        cartRepository.paymentCart(idUser,date);
     }
 
     @Override
@@ -55,5 +59,10 @@ public class CartService implements ICartService{
     @Override
     public void deleteCart(Long idProduct, Long idUser) {
         cartRepository.deleteCart(idProduct,idUser);
+    }
+
+    @Override
+    public Page<ICartDto> historyProduct(Pageable pageable, Long idUser) {
+        return cartRepository.historyProduct(pageable, idUser);
     }
 }

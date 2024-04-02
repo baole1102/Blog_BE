@@ -27,6 +27,8 @@ public class Cart {
     private Date createOrder;
     private Long totalPrice;
     private int quantity;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean confirm = false;
 
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id")

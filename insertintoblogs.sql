@@ -45,6 +45,16 @@ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`passwo
  VALUES ('dole','dole27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Do Beo','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
 INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
  VALUES ('tunglam','tunglam27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Tung Lam','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('tuan','tuan29@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Tuan Le','0768568321','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('hai','hai28@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Hai Le','0768568123','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('hung','hung@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Hung Le','0768678963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('vi','vi27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Vi Beo','0768588763','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('phuong','phuong27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Phuong','0768878963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
 
  
  -- blog -- 
@@ -80,7 +90,7 @@ INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('3', '2');
 INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('4', '2');
 
 
-INSERT INTO user_has_role (`user_id`,`role_id`) values (1,1),(2,2),(3,2),(4,3),(5,3);
+INSERT INTO user_has_role (`user_id`,`role_id`) values (1,1),(2,2),(3,2),(4,3),(5,3),(6,1),(7,2),(8,2),(9,3),(10,3);
 
 INSERT INTO product (name_product, description, image_product, is_deleted, content, quantity,price,type_product_id) VALUES
 ('Microsoft Office 365', 'Bộ ứng dụng văn phòng trực tuyến của Microsoft', 'https://example.com/office365.jpg', 0, 'Microsoft Office 365 là một bộ ứng dụng văn phòng trực tuyến hàng đầu, bao gồm Word, Excel, PowerPoint và nhiều ứng dụng khác.', 100,500000,1),

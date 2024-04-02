@@ -6,6 +6,8 @@ import com.example.sprint2.model.User;
 import com.example.sprint2.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +19,7 @@ import java.util.zip.DataFormatException;
 
 @RequiredArgsConstructor
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
     @Autowired
     private final JwtTokenUtil jwtTokenUtil;
     @Autowired
@@ -39,7 +41,7 @@ public class UserService implements IUserService{
 
     @Override
     public void registerUser(User user, Long role) {
-        userRepository.registerUser(user,role);
+        userRepository.registerUser(user, role);
     }
 
     @Override
@@ -61,7 +63,7 @@ public class UserService implements IUserService{
                 nameAccount, passWord
         );
         authenticationManager.authenticate(authenticationToken);
-        return jwtTokenUtil.generateToken( optionalUser.get());
+        return jwtTokenUtil.generateToken(optionalUser.get());
     }
 
     @Override
@@ -85,6 +87,15 @@ public class UserService implements IUserService{
         return userRepository.getRoleForUser(account);
     }
 
+    @Override
+    public Page<IUserDto> getAllUserByAmin(Pageable pageable, String name) {
+        return userRepository.getAllUserByAmin(pageable, "%" + name + "%");
+    }
+
+    @Override
+    public void deleteAccount(Long id) {
+        userRepository.deleteAccount(id);
+    }
 
 
 }

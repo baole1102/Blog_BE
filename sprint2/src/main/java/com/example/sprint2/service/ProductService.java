@@ -1,6 +1,7 @@
 package com.example.sprint2.service;
 
 import com.example.sprint2.dto.IProductDto;
+import com.example.sprint2.dto.NewIProductDto;
 import com.example.sprint2.dto.ProductDto;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.repository.IProductRepository;
@@ -9,7 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService implements IProductService {
@@ -32,11 +35,6 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Page<IProductDto> historyProduct(Pageable pageable, Long idUser) {
-        return productRepository.historyProduct(pageable, idUser);
-    }
-
-    @Override
     public Page<Product> manageProduct(Pageable pageable, String name) {
         return productRepository.manageProduct(pageable, "%" + name + "%");
     }
@@ -44,6 +42,31 @@ public class ProductService implements IProductService {
     @Override
     public void save(Product product) {
         productRepository.save(product);
+    }
+
+    @Override
+    public void createProduct(ProductDto product) {
+        productRepository.createProduct(product);
+    }
+
+    @Override
+    public Optional<NewIProductDto> getIdForProduct(Long idProduct) {
+        return productRepository.getIdForProduct(idProduct);
+    }
+
+    @Override
+    public void updateProduct(ProductDto product) {
+        productRepository.updateProduct(product);
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        productRepository.deleteProduct(id);
+    }
+
+    @Override
+    public List<IProductDto> getDetailsOrder(Long idUser, String createOrder) {
+        return productRepository.getDetailsOrder(idUser,createOrder);
     }
 
 }

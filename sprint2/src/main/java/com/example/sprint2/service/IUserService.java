@@ -2,6 +2,8 @@ package com.example.sprint2.service;
 
 import com.example.sprint2.dto.IUserDto;
 import com.example.sprint2.model.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
@@ -16,5 +18,7 @@ public interface IUserService {
     void updateForUser(@Param("id") Long id);
     User findUserByAccount(@Param("account") String account);
     String getRoleForUser(String account);
+    Page<IUserDto> getAllUserByAmin(Pageable pageable, String name);
+    void deleteAccount(@Param("id") Long id);
 
 }

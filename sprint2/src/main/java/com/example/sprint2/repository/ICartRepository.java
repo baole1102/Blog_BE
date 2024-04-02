@@ -1,14 +1,18 @@
 package com.example.sprint2.repository;
 
 import com.example.sprint2.dto.ICartDto;
+import com.example.sprint2.dto.IProductDto;
 import com.example.sprint2.model.Cart;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -39,8 +43,8 @@ public interface ICartRepository extends JpaRepository<Cart,Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE `blogs`.`cart` SET `status` = true WHERE cart.user_id =:idUser",nativeQuery = true)
-    void paymentCart(@Param("idUser") Long idUser);
+    @Query(value = "UPDATE `blogs`.`cart` SET `status` = true,`create_order` = :date WHERE cart.user_id =:idUser",nativeQuery = true)
+    void paymentCart(@Param("idUser") Long idUser, Date date);
 
 
     @Query(value = "select count(*) \n" +
@@ -51,4 +55,14 @@ public interface ICartRepository extends JpaRepository<Cart,Long> {
     @Modifying
     @Query(value = "DELETE FROM cart c WHERE c.product_id =:idProduct and c.user_id = :idUser and c.status = false",nativeQuery = true)
     void deleteCart(Long idProduct,Long idUser);
+
+    @Query(value = "select max(c.create_order) as createOrder, " +
+            "max(c.confirm) as confirm," +
+            "max(c.status) as status\n" +
+            "from cart c \n" +
+            "where c.user_id = :idUser and c.status = 1\n" +
+            "group by c.create_order", nativeQuery = true)
+    Page<ICartDto> historyProduct (Pageable pageable, Long idUser);
+
+    
 }

@@ -181,6 +181,7 @@ public class Payment {
             @RequestParam(value = "vnp_OrderInfo", required = false) String order,
             @RequestParam(value = "vnp_ResponseCode", required = false) String responseCode) {
         // Xử lý thông tin thanh toán ở đây
-        cartService.paymentCart(idAccount);
+        Date date = new Date();
+        cartService.paymentCart(idAccount,date);
     }
 }

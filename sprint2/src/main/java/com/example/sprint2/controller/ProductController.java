@@ -1,6 +1,8 @@
 package com.example.sprint2.controller;
 
 import com.example.sprint2.dto.IBlogDto;
+import com.example.sprint2.dto.NewIProductDto;
+import com.example.sprint2.dto.ProductDto;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.model.TypeProduct;
 import com.example.sprint2.service.IBlogService;
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -66,5 +69,14 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findProductByOptional(@PathVariable Long id){
+        Optional<NewIProductDto> product = productService.getIdForProduct(id);
+        if (product == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(product,HttpStatus.OK);
     }
 }

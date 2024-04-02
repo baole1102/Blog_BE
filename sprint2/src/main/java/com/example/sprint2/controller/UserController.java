@@ -3,6 +3,7 @@ package com.example.sprint2.controller;
 import com.example.sprint2.dto.*;
 import com.example.sprint2.model.User;
 import com.example.sprint2.service.IBlogService;
+import com.example.sprint2.service.ICartService;
 import com.example.sprint2.service.IProductService;
 import com.example.sprint2.service.IUserService;
 import jakarta.validation.Valid;
@@ -33,6 +34,8 @@ public class UserController {
     private IProductService productService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private ICartService cartService;
 
 
     @PostMapping("/register")
@@ -101,7 +104,7 @@ public class UserController {
     public ResponseEntity<?> getListHistoryProduct(@RequestParam(name = "page") int page,
                                                    @RequestParam Long idUser) {
         Pageable pageable = PageRequest.of(page, 2);
-        Page<IProductDto> list = productService.historyProduct(pageable, idUser);
+        Page<ICartDto> list = cartService.historyProduct(pageable, idUser);
         if (list == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

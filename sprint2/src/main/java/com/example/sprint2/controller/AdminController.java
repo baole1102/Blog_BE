@@ -1,13 +1,13 @@
 package com.example.sprint2.controller;
 
-import com.example.sprint2.dto.BlogDTO;
-import com.example.sprint2.dto.IBlogDto;
-import com.example.sprint2.dto.ProductDto;
+import com.example.sprint2.dto.*;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.service.IBlogService;
 import com.example.sprint2.service.IProductService;
+import com.example.sprint2.service.IUserService;
 import com.example.sprint2.service.ProductService;
 import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +18,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/admin")
@@ -26,6 +30,8 @@ public class AdminController {
     private IBlogService blogService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private IUserService userService;
 
     @PatchMapping("/editBlog")
     public ResponseEntity<?> editBlogByAdmin(@RequestBody @Valid BlogDTO blogDTO, BindingResult bindingResult) {
@@ -85,7 +91,7 @@ public class AdminController {
     @GetMapping("/manageProduct")
     public ResponseEntity<?> manageProduct(@RequestParam(name = "name", defaultValue = "") String name,
                                            @RequestParam(name = "page", defaultValue = "0") int page){
-        Pageable pageable = PageRequest.of(page,3);
+        Pageable pageable = PageRequest.of(page,5);
         Page<Product> list = productService.manageProduct(pageable,name.trim());
         if (list == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -94,11 +100,11 @@ public class AdminController {
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<?> addProduct(@RequestBody @Valid Product product,BindingResult bindingResult){
+    public ResponseEntity<?> addProduct(@RequestBody @Valid ProductDto product,BindingResult bindingResult){
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        productService.save(product);
+        productService.createProduct(product);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -107,8 +113,47 @@ public class AdminController {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        Product product = productService.getProductById(productDto.getIdProduct());
-        productService.save(product);
+        productService.updateProduct(productDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<?> deleteProductByAdmin(@PathVariable Long id) {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllAccount")
+    public ResponseEntity<?> getAllAccountByAdmin(@RequestParam(name = "name", defaultValue = "") String name,
+                                                  @RequestParam(name = "page",defaultValue = "0") int page){
+        Pageable pageable = PageRequest.of(page,5);
+        Page<IUserDto> list = userService.getAllUserByAmin(pageable,name);
+        if (list == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteAccount/{id}")
+    public ResponseEntity<?> deleteAccountByAdmin(@PathVariable Long id) {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        userService.deleteAccount(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/detailsOrder")
+    public ResponseEntity<?> getDetailsOrder(@RequestParam Long idUser,
+                                             @RequestParam String orderDate){
+        List<IProductDto> list = productService.getDetailsOrder(idUser, orderDate);
+        if (list == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
 }

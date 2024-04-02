@@ -1,6 +1,6 @@
 use blogs;
 -- role -- 
-INSERT INTO role (`role_enum`) VALUES ('ROLE_ADMIN'),('ROLE_USER'),('ROLE_MEMBER');
+INSERT INTO role (`name`) VALUES ('ADMIN'),('USER'),('MEMBER');
 
 -- category--
  INSERT INTO category (`is_deleted`,`type_category`) 
@@ -35,16 +35,16 @@ INSERT INTO role (`role_enum`) VALUES ('ROLE_ADMIN'),('ROLE_USER'),('ROLE_MEMBER
  VALUES ('0','NextJs','1');
  
  -- user--
- INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`role_id`) 
- VALUES ('bao','levannhatbao29@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Bao Le','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','1');
- INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`role_id`) 
- VALUES ('baole','levannhatbao28@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Bao Le','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','2');
- INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`role_id`) 
- VALUES ('baonhat','levannhatbao27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Bao Le','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','2');
-INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`role_id`) 
- VALUES ('dole','dole27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Do Beo','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','3');
-INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`role_id`) 
- VALUES ('tunglam','tunglam27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Tung Lam','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','3');
+ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('bao','levannhatbao29@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Bao Le','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('baole','levannhatbao28@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Bao Le','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+ INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('baonhat','levannhatbao27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Bao Le','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('dole','dole27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Do Beo','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
+INSERT INTO user (`account`,`email`,`image`,`is_deleted`,`name`,`number`,`password`,`address`) 
+ VALUES ('tunglam','tunglam27@gmail.com','https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/284180584_1458094071312347_7463131271359909719_n.jpg?stp=c7.0.40.40a_cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WpGDAXd8M9EAX9pkjSD&_nc_ht=scontent.fdad1-1.fna&oh=00_AfDzdJ6ceaZJA36KXYN4RfinlbB6T7Nzdhi-goUB7Jvhyw&oe=65FAF645','0','Tung Lam','0768568963','$2a$12$yPU2ZYoEwsiy9uho55s8nu3jKtA2tYDfi/44BGcOyrgpe5MNMHlYq','33B Hoang Quoc Viet,Hue');
 
  
  -- blog -- 
@@ -71,4 +71,38 @@ VALUES('Trong bài viết này, tôi muốn giới thiệu các trang web khác 
 Gamification là một giải pháp tốt cho vấn đề này. Nó sử dụng một nỗ lực chiến lược đơn giản để thúc đẩy và thu hút người dùng trong khi tìm hiểu điều gì đó mới. Đó là một kỹ thuật thêm các yếu tố thiết kế điển hình từ các trò chơi để nâng cao quá trình học tập. Điều này được thực hiện bằng cách thúc đẩy mong muốn tự nhiên của mọi người về giao tiếp xã hội, học tập, làm chủ, cạnh tranh, thành tích, địa vị hoặc thể hiện bản thân. Việc triển khai sớm Gamification sử dụng một hệ thống phần thưởng đơn giản cho người chơi sau khi họ hoàn thành nhiệm vụ để thu hút họ. Phần thưởng bao gồm điểm số, huy hiệu thành tích hoặc tiền ảo để sử dụng.
 +Một cách tiếp cận khác của Gamification biến đổi chính nhiệm vụ trong trò chơi. Điều này được thực hiện bằng cách bao gồm một lựa chọn có ý nghĩa, hướng dẫn giới thiệu hoặc thêm một câu chuyện.
 +Trong chương tiếp theo, tôi sẽ chỉ ra các trang web khác nhau có thể được sử dụng để học JavaScript bằng cách chơi trò chơi hoặc giải câu đố.','https://files.fullstack.edu.vn/f8-prod/blog_posts/6936/6422afa5a62f8.jpg','0','Learn JavaScript while Playing Games — Gamify Your Learning','600','1','3','5');
+
+
+
+INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('1', '2');
+INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('2', '2');
+INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('3', '2');
+INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('4', '2');
+
+
+INSERT INTO user_has_role (`user_id`,`role_id`) values (1,1),(2,2),(3,2),(4,3),(5,3);
+
+INSERT INTO product (name_product, description, image_product, is_deleted, content, quantity,price,type_product_id) VALUES
+('Microsoft Office 365', 'Bộ ứng dụng văn phòng trực tuyến của Microsoft', 'https://example.com/office365.jpg', 0, 'Microsoft Office 365 là một bộ ứng dụng văn phòng trực tuyến hàng đầu, bao gồm Word, Excel, PowerPoint và nhiều ứng dụng khác.', 100,500000,1),
+('Adobe Photoshop', 'Phần mềm chỉnh sửa ảnh chuyên nghiệp của Adobe', 'https://example.com/photoshop.jpg', 0, 'Adobe Photoshop là một phần mềm chỉnh sửa ảnh chuyên nghiệp, được sử dụng rộng rãi trong thiết kế đồ họa và nhiếp ảnh số.', 50,500000,2),
+('AutoCAD', 'Phần mềm thiết kế và vẽ kỹ thuật của Autodesk', 'https://example.com/autocad.jpg', 0, 'AutoCAD là một phần mềm thiết kế và vẽ kỹ thuật hàng đầu, được sử dụng rộng rãi trong các ngành công nghiệp như xây dựng, kiến trúc và cơ khí.', 30,500000,3),
+('Visual Studio Code', 'Môi trường phát triển mã nguồn mở và miễn phí của Microsoft', 'https://example.com/vscode.jpg', 0, 'Visual Studio Code là một môi trường phát triển mã nguồn mở và miễn phí, phù hợp cho phát triển web, mobile và nhiều loại ứng dụng khác.', 80,500000,4),
+('VMware Workstation', 'Phần mềm ảo hóa máy tính của VMware', 'https://example.com/vmware.jpg', 0, 'VMware Workstation là một phần mềm ảo hóa máy tính mạnh mẽ, cho phép bạn chạy nhiều hệ điều hành trên cùng một máy tính.', 20,500000,5),
+('Sketch', 'Phần mềm thiết kế giao diện người dùng cho Mac', 'https://example.com/sketch.jpg', 0, 'Sketch là một phần mềm thiết kế giao diện người dùng chuyên nghiệp cho các thiết kế trên nền tảng Mac.', 40,500000,1);
+
+
+
+INSERT INTO cart (create_order, is_deleted, status, total_price, product_id, user_id,quantity) VALUES
+('2024-03-28 08:30:00', 0, 1, 500000, 1, 2,1),
+('2024-03-28 09:45:00', 0, 1, 800000, 2, 2,1),
+('2024-03-28 10:15:00', 0, 1, 1200000, 3, 3,1),
+('2024-03-28 08:30:00', 0, 1, 500000, 4, 3,1),
+('2024-03-28 09:45:00', 0, 1, 800000, 5, 4,1),
+('2024-03-28 10:15:00', 0, 1, 1200000, 6, 4,1);
+
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Văn Phòng');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Gamming');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Có Dây');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Không Dây');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Set');
 

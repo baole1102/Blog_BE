@@ -59,9 +59,38 @@ public class BlogService implements IBlogService{
     }
 
     @Override
+    public Blog findById(Long id) {
+        return blogRepository.findById(id).get();
+    }
+
+    @Override
     public void editBlog(BlogDTO blog) {
         blogRepository.editBlog(blog);
     }
 
+    @Override
+    public void deleteBlog(Long id) {
+        blogRepository.deleteBlog(id);
+    }
+
+    @Override
+    public Page<IBlogDto> manageBlog(Pageable pageable, Long idCate) {
+        return blogRepository.manageBlog(pageable,idCate);
+    }
+
+    @Override
+    public void updateViewer(Long id, int view) {
+        blogRepository.updateViewer(id,view);
+    }
+
+    @Override
+    public Page<IBlogDto> getBlogByIdUser(Pageable pageable, Long idUser) {
+        return blogRepository.getBlogByIdUser(pageable,idUser);
+    }
+
+    @Override
+    public List<IBlogDto> listBlogForProduct() {
+        return blogRepository.listBlogForProduct();
+    }
 
 }

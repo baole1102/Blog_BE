@@ -12,13 +12,32 @@ import java.util.Optional;
 
 public interface IBlogService {
     List<IBlogDto> listBlog();
-    Optional<IBlogDto> findByBlogId (@Param("id") Long id);
+
+    Optional<IBlogDto> findByBlogId(@Param("id") Long id);
+
     Page<IBlogDto> getAllBlogSearch(Pageable pageable, Long id);
+
     Page<IBlogDto> pageListBlog(Pageable pageable);
+
     void create(BlogDTO blog);
+
     List<IBlogDto> getBlogHighView();
+
     List<IBlogDto> listBlogCurrent();
+
     Page<IBlogDto> findBlogByTopic(Pageable pageable, @Param("id") Long id);
 
+    Blog findById(Long id);
+
     void editBlog(BlogDTO blog);
+
+    void deleteBlog(@Param("id") Long id);
+
+    Page<IBlogDto> manageBlog(Pageable pageable, @Param("id") Long idCate);
+
+    void updateViewer(Long id, int view);
+
+    Page<IBlogDto> getBlogByIdUser(Pageable pageable,Long idUser);
+    List<IBlogDto> listBlogForProduct();
+
 }

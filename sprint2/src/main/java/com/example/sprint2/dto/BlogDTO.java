@@ -1,9 +1,5 @@
 package com.example.sprint2.dto;
 
-import com.example.sprint2.model.Category;
-import com.example.sprint2.model.Topic;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -15,7 +11,7 @@ import java.util.Date;
 public class BlogDTO {
     private Long id;
     @NotBlank(message = "Tên không được để rỗng")
-    @Size(min = 2, max = 255, message = "Tên phim có độ dài từ 2 đến 255 ký tự")
+    @Size(min = 2, max = 255, message = "Tên blog có độ dài từ 2 đến 255 ký tự")
     private String title;
     @NotBlank(message = "Tên không được để rỗng")
     private String description;
@@ -25,7 +21,7 @@ public class BlogDTO {
     @NotBlank(message = "Tên không được để rỗng")
     private String imageBlog;
     @NotBlank(message = "Tên không được để rỗng")
-    @Size(min = 2, max = 255, message = "Tên phim có độ dài từ 2 đến 255 ký tự")
+    @Size(min = 2, max = 500, message = "Tên blog có độ dài từ 2 đến 500 ký tự")
     private String content;
     private Boolean isDeleted = false;
     private Boolean status = false;

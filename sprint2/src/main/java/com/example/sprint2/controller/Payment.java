@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
@@ -181,7 +182,7 @@ public class Payment {
             @RequestParam(value = "vnp_OrderInfo", required = false) String order,
             @RequestParam(value = "vnp_ResponseCode", required = false) String responseCode) {
         // Xử lý thông tin thanh toán ở đây
-        Date date = new Date();
+        LocalDateTime date = LocalDateTime.now();
         cartService.paymentCart(idAccount,date);
     }
 }

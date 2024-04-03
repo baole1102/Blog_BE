@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface ICartService {
     void save(Cart cart);
     List<ICartDto> listCart(Long idUser);
     Long totalPrice(Long idUser);
-    void paymentCart(Long idUser, Date date);
+    void paymentCart(Long idUser, LocalDateTime date);
     Long countCart(Long idUser);
     void deleteCart(Long idProduct,Long idUser);
     Page<ICartDto> historyProduct (Pageable pageable, Long idUser);

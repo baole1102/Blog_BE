@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +25,6 @@ public interface IProductService {
     void updateProduct(@Param("product") ProductDto product);
     void deleteProduct(@Param("id") Long id);
 
-    List<IProductDto> getDetailsOrder(Long idUser, String createOrder);
+    List<IProductDto> getDetailsOrder(Long idUser, Timestamp createOrder);
 
 }

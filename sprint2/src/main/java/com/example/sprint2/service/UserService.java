@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.zip.DataFormatException;
 
@@ -95,6 +96,11 @@ public class UserService implements IUserService {
     @Override
     public void deleteAccount(Long id) {
         userRepository.deleteAccount(id);
+    }
+
+    @Override
+    public Long totalOrder(Long idUser, Timestamp createOrder) {
+        return userRepository.totalOrder(idUser,createOrder);
     }
 
 

@@ -14,6 +14,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +53,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             "p.type_product_id as typeProductId\n" +
             "from product p\n" +
             "join type_product tp on p.type_product_id = tp.id\n" +
-            "where p.id = :idProduct and p.is_deleted = false",nativeQuery = true)
+            "where p.id = :idProduct and p.is_deleted = false", nativeQuery = true)
     Optional<NewIProductDto> getIdForProduct(@Param("idProduct") Long idProduct);
 
     @Transactional
@@ -69,18 +71,12 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "update product set product.is_deleted = 1 where product.id = :id", nativeQuery = true)
     void deleteProduct(@Param("id") Long id);
 
-    @Query(value = "select p.id as id, p.content as content, \n" +
-            "p.description as description,\n" +
-            "p.image_product as imageProduct,\n" +
-            "p.name_product as nameProduct,\n" +
-            "p.price as price,\n" +
-            "p.quantity as quantity,\n" +
-            "p.id as id,\n" +
-            "p.type_product_id as typeProductId,\n" +
-            "c.confirm as confirm\n" +
-            "from product p\n" +
-            "join type_product tp on p.type_product_id = tp.id\n" +
-            "join cart c on c.product_id = p.id\n" +
-            "where p.id = :idUser and c.create_order = :createOrder ", nativeQuery = true)
-    List<IProductDto> getDetailsOrder(Long idUser, String createOrder);
+    @Query(value = "SELECT p.id AS id, p.content AS content, " +
+            "p.description AS description, p.image_product AS imageProduct, " +
+            "p.name_product AS nameProduct, p.price AS price, " +
+            "c.quantity AS quantity, c.confirm AS confirm " +
+            "FROM product p " +
+            "JOIN cart c ON c.product_id = p.id " +
+            "WHERE c.user_id = :idUser AND c.create_order = :createOrder ", nativeQuery = true)
+    List<IProductDto> getDetailsOrder(@Param("idUser") Long idUser, @Param("createOrder") Timestamp createOrder);
 }

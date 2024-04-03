@@ -12,15 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @RestController
 @CrossOrigin("*")
@@ -110,4 +113,39 @@ public class UserController {
         }
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+
+    @GetMapping("/detailsOrder")
+    public ResponseEntity<?> getDetailsOrder(@RequestParam Long idUser,
+                                             @RequestParam(defaultValue = "") String orderDate  ) {
+        Timestamp timestamp = convertToTimestamp(orderDate);
+        List<IProductDto> list = productService.getDetailsOrder(idUser, timestamp);
+        if (list == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    private Timestamp convertToTimestamp(String orderDateTime) {
+        if (orderDateTime.isEmpty()) {
+            return null;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date parsedDate = dateFormat.parse(orderDateTime);
+            return new Timestamp(parsedDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @GetMapping("/totalOrder")
+    public ResponseEntity<?> getTotalOrder(@RequestParam Long idUser,
+                                             @RequestParam(defaultValue = "") String orderDate  ) {
+        Timestamp timestamp = convertToTimestamp(orderDate);
+        Long total = userService.totalOrder(idUser,timestamp);
+        return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
 }

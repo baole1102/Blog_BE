@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public interface ICartRepository extends JpaRepository<Cart,Long> {
     @Transactional
     @Modifying
     @Query(value = "UPDATE `blogs`.`cart` SET `status` = true,`create_order` = :date WHERE cart.user_id =:idUser",nativeQuery = true)
-    void paymentCart(@Param("idUser") Long idUser, Date date);
+    void paymentCart(@Param("idUser") Long idUser, LocalDateTime date);
 
 
     @Query(value = "select count(*) \n" +

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 
 public interface IUserService {
@@ -20,5 +21,6 @@ public interface IUserService {
     String getRoleForUser(String account);
     Page<IUserDto> getAllUserByAmin(Pageable pageable, String name);
     void deleteAccount(@Param("id") Long id);
+    Long totalOrder(Long idUser, Timestamp createOrder);
 
 }

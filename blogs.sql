@@ -220,10 +220,8 @@ p.description as description,
 p.image_product as imageProduct,
 p.name_product as nameProduct,
 p.price as price,
-p.quantity as quantity,
-p.type_product_id as typeProductId,
+c.quantity as quantity,
 c.confirm as confirm
 from product p
-join type_product tp on p.type_product_id = tp.id
 join cart c on c.product_id = p.id
-where p.id = 2 and c.create_order = "2024-04-02 15:25:04.460000" ;
+where c.user_id = 2 and c.create_order = "2024-04-01T05:51:40.791+00:00" ;

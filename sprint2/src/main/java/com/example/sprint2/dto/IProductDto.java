@@ -1,6 +1,6 @@
 package com.example.sprint2.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public interface IProductDto {
     Long getId();
@@ -12,5 +12,7 @@ public interface IProductDto {
     Integer getQuantity();
     Long getTypeProductId();
     Boolean getBoolean();
+    LocalDateTime getCreateOrder();
+    Boolean getConfirm();
 
 }

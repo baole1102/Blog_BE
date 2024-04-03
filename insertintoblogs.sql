@@ -1,6 +1,6 @@
 use blogs;
 -- role -- 
-INSERT INTO role (`name`) VALUES ('ADMIN'),('USER'),('MEMBER');
+INSERT INTO role (`name`) VALUES ('ROLE_ADMIN'),('ROLE_USER'),('ROLE_MEMBER');
 
 -- category--
  INSERT INTO category (`is_deleted`,`type_category`) 
@@ -92,6 +92,13 @@ INSERT INTO `blogs`.`favorite` (`blog_id`, `user_id`) VALUES ('4', '2');
 
 INSERT INTO user_has_role (`user_id`,`role_id`) values (1,1),(2,2),(3,2),(4,3),(5,3),(6,1),(7,2),(8,2),(9,3),(10,3);
 
+
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Văn Phòng');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Gamming');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Có Dây');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Không Dây');
+INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Set');
+
 INSERT INTO product (name_product, description, image_product, is_deleted, content, quantity,price,type_product_id) VALUES
 ('Microsoft Office 365', 'Bộ ứng dụng văn phòng trực tuyến của Microsoft', 'https://example.com/office365.jpg', 0, 'Microsoft Office 365 là một bộ ứng dụng văn phòng trực tuyến hàng đầu, bao gồm Word, Excel, PowerPoint và nhiều ứng dụng khác.', 100,500000,1),
 ('Adobe Photoshop', 'Phần mềm chỉnh sửa ảnh chuyên nghiệp của Adobe', 'https://example.com/photoshop.jpg', 0, 'Adobe Photoshop là một phần mềm chỉnh sửa ảnh chuyên nghiệp, được sử dụng rộng rãi trong thiết kế đồ họa và nhiếp ảnh số.', 50,500000,2),
@@ -103,16 +110,11 @@ INSERT INTO product (name_product, description, image_product, is_deleted, conte
 
 
 INSERT INTO cart (create_order, is_deleted, status, total_price, product_id, user_id,quantity) VALUES
-('2024-03-28 08:30:00', 0, 1, 500000, 1, 2,1),
-('2024-03-28 09:45:00', 0, 1, 800000, 2, 2,1),
-('2024-03-28 10:15:00', 0, 1, 1200000, 3, 3,1),
-('2024-03-28 08:30:00', 0, 1, 500000, 4, 3,1),
-('2024-03-28 09:45:00', 0, 1, 800000, 5, 4,1),
-('2024-03-28 10:15:00', 0, 1, 1200000, 6, 4,1);
+('2024-04-03T12:51:40.791', 0, 1, 500000, 1, 2,1),
+('2024-04-03T12:51:40.791', 0, 1, 800000, 2, 2,1),
+('2024-04-03T12:51:40.791', 0, 1, 1200000, 3, 3,1),
+('2024-04-03T12:51:40.791', 0, 1, 500000, 4, 3,1),
+('2024-04-03T12:51:40.791', 0, 1, 800000, 5, 4,1),
+('2024-04-03T12:51:40.791', 0, 1, 1200000, 6, 4,1);
 
-INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Văn Phòng');
-INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Gamming');
-INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Có Dây');
-INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Không Dây');
-INSERT INTO `blogs`.`type_product` (`type_product`) VALUES ('Set');
 

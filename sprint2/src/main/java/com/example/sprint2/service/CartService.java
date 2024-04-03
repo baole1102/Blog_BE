@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class CartService implements ICartService{
     }
 
     @Override
-    public void paymentCart(Long idUser , Date date) {
+    public void paymentCart(Long idUser , LocalDateTime date) {
         cartRepository.paymentCart(idUser,date);
     }
 

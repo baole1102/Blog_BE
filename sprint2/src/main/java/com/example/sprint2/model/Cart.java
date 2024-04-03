@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,8 +24,7 @@ public class Cart {
     private Boolean status = false;
     @Column(columnDefinition = "boolean default false")
     private Boolean isDeleted = false;
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date createOrder;
+    private LocalDateTime createOrder;
     private Long totalPrice;
     private int quantity;
     @Column(columnDefinition = "boolean default false")

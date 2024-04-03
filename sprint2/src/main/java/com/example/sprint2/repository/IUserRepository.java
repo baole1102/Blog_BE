@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Repository
@@ -68,5 +69,11 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "update user set user.is_deleted = 1 where user.id = :id", nativeQuery = true)
     void deleteAccount(@Param("id") Long id);
+
+    @Query(value = "select sum(c.quantity*p.price)\n" +
+            "from product p\n" +
+            "join cart c on p.id = c.product_id\n" +
+            "where c.user_id = :idUser and c.create_order = :createOrder  and c.status = 1;",nativeQuery = true)
+    Long totalOrder(Long idUser, Timestamp createOrder);
 }
 
